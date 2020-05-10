@@ -84,7 +84,10 @@ const MainContainer = styled.div`
 function App() {
   const location = useLocation()
   const isRoot = location.pathname === '/'
-
+  const params = new URLSearchParams(location.search);
+  const urlParam = params.get('url');
+  console.log(decodeURIComponent(urlParam));
+  let url = new URL(decodeURI(urlParam) || "https://site.com:443/user?id=123#settings");
   return (
     <>
       <Header />
@@ -118,7 +121,7 @@ function App() {
                   </div>
                 )}
               >
-                https://
+                {url.protocol}//
               </Chunk>
               <Chunk
                 url="domain"
@@ -142,7 +145,7 @@ function App() {
                   </div>
                 )}
               >
-                site.com
+                {url.hostname}
               </Chunk>
               <Chunk
                 url="port"
@@ -173,7 +176,7 @@ function App() {
                   </div>
                 )}
               >
-                :443
+                {url.port != null && url.port !== "" ? ":" + url.port : (url.protocol === "http" ? ":80" : ":443")}
               </Chunk>
               <Chunk
                 url="path"
@@ -220,7 +223,7 @@ function App() {
                   </div>
                 )}
               >
-                ?id=123
+                {url.searchParams ? "?" + url.searchParams.toString() : ""}
               </Chunk>
               <Chunk
                 url="fragment"
@@ -244,7 +247,7 @@ function App() {
                   </div>
                 )}
               >
-                #settings
+                {url.hash}
               </Chunk>
             </UrlBox>
           </MainContainer>
