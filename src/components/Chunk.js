@@ -90,7 +90,7 @@ export const Chunk = ({
 
   return (
     <Container color={color}>
-      <NavLink to={url + location.search}>{children}</NavLink>
+      <NavLink to={"/" + url + location.search}>{children}</NavLink>
       {isActive && explanation && (
         <Popover orientation={orientation} align={align}>
           {explanation()}

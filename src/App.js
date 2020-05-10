@@ -52,8 +52,7 @@ function App() {
   const isRoot = location.pathname === '/'
   const params = new URLSearchParams(location.search);
   const urlParam = params.get('url');
-  console.log(decodeURIComponent(urlParam));
-  let url = new URL(decodeURI(urlParam) || "https://site.com:443/user?id=123#settings");
+  let url = new URL(urlParam != null && urlParam !== "" ? decodeURI(urlParam) : "https://site.com:443/user?id=123#settings");
   return (
     <IntlProvider locale={locale} messages={messages}>
       <LocaleContext.Provider value={{ locale, setLocale }}>
