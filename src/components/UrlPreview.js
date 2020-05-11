@@ -22,12 +22,12 @@ const formattedMessageValues = {
 }
 
 const UrlBox = styled.div`
-	display: inline-block;
+	display: block;
 	padding: 1rem 1.25rem;
 	max-width: 100%;
 	width: 100%;
 	white-space: nowrap;
-	overflow-x: auto;
+	overflow-x: scroll;
 
 	border: 1px solid hsla(220, 15%, 40%, 0.16);
 	border-radius: 0.5rem;
@@ -72,8 +72,7 @@ const UrlBox = styled.div`
 	}
 `
 
-export const UrlPreview = (url) => {
-  console.log(url)
+export const UrlPreview = ({ url }) => {
 	return (
 		<UrlBox>
 			<Chunk
@@ -91,7 +90,7 @@ export const UrlPreview = (url) => {
 					</div>
 				)}
 			>
-				{url.protocol+"//"}
+				{url.protocol + '//'}
 			</Chunk>
 			<Chunk
 				url="domain"
@@ -109,7 +108,7 @@ export const UrlPreview = (url) => {
 					</div>
 				)}
 			>
-				{url.host}
+				{url.hostname}
 			</Chunk>
 			<Chunk
 				url="port"
