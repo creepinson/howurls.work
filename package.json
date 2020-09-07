@@ -36,6 +36,6 @@
     ]
   },
   "devDependencies": {
-    "@formatjs/cli": "^1.6.13"
+    "@formatjs/cli": "^2.9.0"
   }
 }
